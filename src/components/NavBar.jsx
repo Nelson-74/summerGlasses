@@ -1,26 +1,28 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import CartWidget from './CartWidget'
+import Logo from '../images/Summer.png'
+
 function NavBar() {
     return (
         <div>
-           <nav class="navbar navbar-expand-lg bg-light">
+           <nav className="navbar navbar-expand-lg bg-light">
              <div>
-               <Link to='/'>
-                 <img src='image/Logo.png' width='90' alt='logo'/>
-               </Link>
+               <a href='#/'>
+                 <img src={Logo} width='120' alt='logo'/>
+               </a>
              </div>
-             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <Link className="nav-link active" to='/'>Inicio</Link>
+             <ul className="navbar-nav mx-auto">
+                <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#/">Inicio</a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to='/Lentes'>Lentes</Link>
+                  <a className="nav-link" href="#/">Lentes</a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to='/Contactos'>Contactos</Link>
-                </li>
-                
+                  <a className="nav-link" href="#/">Contactos</a>
+                </li>                  
              </ul>
+             <div className='carrito mx-5'><CartWidget items={8}/></div>
             </nav> 
         </div>
         
