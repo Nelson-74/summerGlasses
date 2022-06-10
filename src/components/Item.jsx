@@ -4,17 +4,19 @@ const Item =({lente: lentes}) => {
     const {nombre,img,precio,desc} = lentes
     
     return (
-        <div className='text-center border-info col mb-2 margin:20'>
-            <div className="card" style={{width: "15rem"}} >
-               <img src={img} class="card-img-top" alt="foto de lentes"/>
-                <div className="card-body">
+        <div className= "row">
+        <div className="row row-cols-3 d-flex m-2 p-2 shadow "style={{width: "21rem"}}>
+            <div className="card" style={{width: "20rem"}} >
+               <img src={img} class="card-img-top" height="170 px" alt="foto de lentes"/>
+                <div className="card-body ">
                    <h5 className="card-title">{nombre}</h5>
                    <p className="card-text">Precio: $ {precio}
                    <br/>
-                   Descripción: {desc}</p>
+                    {desc}</p>
                    <a href="#/" class="btn btn-primary">Ver descripción</a>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
