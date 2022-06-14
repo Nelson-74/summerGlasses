@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Item =({lente: lentes}) => {
-    const {nombre,img,precio,desc} = lentes
+    const {nombre,img,precio,desc,stock} = lentes
     
     return (
         <div className= "row">
@@ -13,6 +13,8 @@ const Item =({lente: lentes}) => {
                    <p className="card-text">Precio: $ {precio}
                    <br/>
                     {desc}</p>
+                    <br/>
+                    <p className="card-text stock-detail">Hay {stock} productos en stock</p>
                    <a href="#/" class="btn btn-primary">Ver descripción</a>
                 </div>
             </div>

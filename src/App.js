@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 // import Lentes from './paginas/Lentes';
 // import Contactos from './paginas/Contactos';
 import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer';
 //import ItemCount from './components/ItemCount';
 
 
@@ -21,6 +22,8 @@ function App() {
       {/* <Inicio/>
       <Lentes/>
       <Contactos/> */}
+      
+      <ItemDetailContainer/>
       </>
   );
 }
