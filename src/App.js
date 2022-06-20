@@ -1,34 +1,31 @@
 import './App.css';
-import React from 'react'
 import NavBar from './components/NavBar';
-// import Inicio from './paginas/Inicio';
 import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
-//import ItemCount from './components/ItemCount';
-import {BrowserRouter, Routes,Route} from 'react-router-dom';
-
+import ItemDetailContainer from './components/ItemDetailContainer'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CartWidget from './components/CartWidget';
 
 function App() {
-  // const onAdd =(count) =>{
-  //   alert(`Agregaste ${count} productos a tu carrito`);
-  // }
+  
   return (
-      
+      <>
       <BrowserRouter>
       <NavBar/>
       <Routes>
+        {/* mostar todos los productos */}
         <Route path='/' element={<ItemListContainer/>}/>
-        <Route path='/item/:itemId' element={<ItemListContainer/>}/>
-        <Route path='/category/Lentes de sol' element={<ItemListContainer category={'Lentes de sol'}/>}/>
-        <Route path='/category/Lentes sport' element={<ItemListContainer category={'Lentes sport'}/> }/>
-        <Route path='/category/Lentes de lectura' element={<ItemListContainer category={'Lentes de lectura'}/> }/>
-        <Route path='/category/Lentes de contacto' element={<ItemListContainer category={'Lentes de contacto'}/> }/>
-        <Route path='/category/Limpieza de lentes' element={<ItemListContainer category={'Limpieza de lentes'}/> }/>
-      
+        <Route path='/home' element={<ItemListContainer/>}/>
+        {/* mostar los productos de una categoría proporcionada */}
+        <Route path='/category/:id' element={<ItemListContainer/>}/>
+        {/* mostar un producto según su id proporcionado */}
+        <Route path='/item/:itemId' element={<ItemDetailContainer/>}/>
+        <Route path='/cartwitget' element={<CartWidget/>}/>
+        <Route path='/*' element={<ItemListContainer/>}/>
+
       </Routes>
       </BrowserRouter>
-      
+      </> 
   );
 }
 
-export default App;
+ export default App

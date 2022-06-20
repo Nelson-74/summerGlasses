@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ItemDetail = ({item:items}) =>{
-    const {nombre,img,precio,desc,stock} = items
+    const {title,img,price,description,stock} = items
     return (
         <div>
            <div className= "row">
@@ -10,10 +10,10 @@ const ItemDetail = ({item:items}) =>{
               <div className="card" style={{width: "20rem"}} >
                 <img src={img} class="card-img-top" height="170 px" alt="foto de lentes"/>
                    <div className="card-body ">
-                       <h5 className="card-title">{nombre}</h5>
-                          <p className="card-text">Precio: $ {precio}
+                       <h5 className="card-title">{title}</h5>
+                          <p className="card-text">Precio: $ {price}
                             <br/>
-                             {desc}</p>
+                             {description}</p>
                             <br/>
                           <p className="card-text stock-detail">Hay {stock} productos en stock</p>
                         <Link to="/" class="btn btn-primary">Ver descripción</Link>

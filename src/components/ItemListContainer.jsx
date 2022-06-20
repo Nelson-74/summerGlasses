@@ -1,28 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
+import gafas from '../products.json'
 
-function ItemListContainer({greeting}) {
-    const [lentes, setLentes]= useState([])
-    const [loading,setLoading]= useState(true)
+function ItemListContainer() {
+    const {id}= useParams();
+    const [lentes, setLentes]= useState([]);
+    const [loading,setLoading]= useState(true);
+    const [error, setError] = useState(false);
 
-    useEffect(()=>{
-        fetch('../products.json')
-        .then(res=>res.json())
-        .catch(error => console.error('Error', error))
-        .then(res => setLentes(res))
-        .finally(()=>setLoading(false))
-    },[])
-     console.log(lentes)
-
+        useEffect(()=> {
+         
+        const watch = new Promise((res) => {
+           setTimeout(()=>{
+           (!id) ? res (gafas) : (gafas.filter(item=> item.id === id));
+           console.log (gafas)
+           },1500); 
+        });
+        watch
+        .then((res)=> {
+            setLentes(res);
+        })
+        .catch((error) => { setError(true); console.log (error);})
+        .finally(()=>{setLoading(false);})
+        
+    },[id]);
+    
     return (
         <>
-        <div className ='text-center'>
-            {loading ?
-            <h2>loading...</h2>   
-             :
-           <ItemList lentes={lentes}/>
-          }
-        </div>
+        
+        <div>{loading && 'loading...'}</div>
+        <div>{error && 'Error encontrado'}</div>
+        <ItemList gafas={lentes}/>
+        
+    
         </>
     )
 }
