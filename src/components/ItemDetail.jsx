@@ -1,8 +1,17 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 const ItemDetail = ({item:items}) =>{
     const {title,img,price,description,stock} = items
+    
+    const [qty,setQty] = useState(1)
+
+    const {isIncart} = useContext()
+    const onAdd =()=>{
+      alert(`Cantidad de productos ${qty}`)
+    }
+
     return (
         <div>
            <div className= "row">

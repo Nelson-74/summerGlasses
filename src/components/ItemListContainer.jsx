@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import gafas from '../products.json'
+import lentes from '../products.json'
 
 function ItemListContainer() {
     const {id}= useParams();
@@ -13,8 +13,8 @@ function ItemListContainer() {
          
         const watch = new Promise((res) => {
            setTimeout(()=>{
-           (!id) ? res (gafas) : (gafas.filter(item=> item.id === id));
-           console.log (gafas)
+           (!id) ? res (lentes) : (lentes.filter(item=> item.id === id));
+           console.log (lentes)
            },1500); 
         });
         watch
@@ -31,7 +31,7 @@ function ItemListContainer() {
         
         <div>{loading && 'loading...'}</div>
         <div>{error && 'Error encontrado'}</div>
-        <ItemList gafas={lentes}/>
+        <ItemList lentes={lentes}/>
         
     
         </>
