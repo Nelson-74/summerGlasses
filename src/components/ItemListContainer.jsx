@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import lentes from '../products.json'
+import gafas from '../products.json'
 
 function ItemListContainer() {
     const {id}= useParams();
@@ -13,7 +14,7 @@ function ItemListContainer() {
          
         const watch = new Promise((res) => {
            setTimeout(()=>{
-           (!id) ? res (lentes) : (lentes.filter(item=> item.id === id));
+           (!id) ? res (lentes) : (lentes.filter(item => item.id === id))
            console.log (lentes)
            },1500); 
         });
@@ -31,7 +32,7 @@ function ItemListContainer() {
         
         <div>{loading && 'loading...'}</div>
         <div>{error && 'Error encontrado'}</div>
-        <ItemList lentes={lentes}/>
+        <ItemList gafas={gafas}/>
         
     
         </>

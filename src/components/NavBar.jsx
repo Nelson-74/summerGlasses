@@ -4,6 +4,7 @@ import Logo from '../images/Summer.png'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import category from '../products.json'
 
 const NavBar = () => {
 const [categories, setCategories] = useState([]);
@@ -16,7 +17,8 @@ const getCategories = () =>{
 };
 
 useEffect(()=>{getCategories();
-},[categories]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[category]);
 
   return (
       

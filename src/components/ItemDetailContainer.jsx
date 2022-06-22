@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
-import lentes from '../products.json'
+import gafas from '../products.json'
 
 function ItemDetailContainer () {
     const [lentes, setLentes] = useState({});
@@ -35,7 +36,7 @@ function ItemDetailContainer () {
         
             <div className='loading'> {loading &&'Loading...'}</div>
             <div>{error && 'Load error '}</div>
-            <ItemDetail lentes={lentes}/>
+            <ItemDetail gafas={gafas}/>
         
         </>
     )

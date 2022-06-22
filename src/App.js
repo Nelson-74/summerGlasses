@@ -4,14 +4,14 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartWidget from './components/CartWidget';
-import MyProvider from './components/CartContext';
+// import MyProvider from './components/CartContext';
 
 function App() {
   
   return (
       <>
       <BrowserRouter>
-      <MyProvider>
+      {/* <MyProvider> */}
       <NavBar/>
       <Routes>
         {/* mostar todos los productos */}
@@ -24,7 +24,7 @@ function App() {
         <Route path='/cartwitget' element={<CartWidget/>}/>
         <Route path='/*' element={<ItemListContainer/>}/>
       </Routes>
-      </MyProvider>
+      {/* </MyProvider> */}
       </BrowserRouter>
       </> 
   );
