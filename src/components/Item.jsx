@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Item =({gafa: gafas}) => {
-    const {title,img,price,description,stock,category} = gafas
+
+const Item =({gafas}) => {
+     const {title,img,price,description,stock,category,id} = gafas
     
     return (
         <div className= "row">
@@ -16,13 +17,12 @@ const Item =({gafa: gafas}) => {
                    <br/>
                     {description}</p>
                     <br/>
-                    <p className="card-text stock-detail">Hay {stock} productos en stock</p>
-                   <Link to="/" className="btn btn-primary">Ver descripción</Link>
+                    <p className="card-text stock-detail">Hay {stock} lentes en stock</p>
+                   <Link to={'/item'+ id} className="btn btn-primary">Ver descripción</Link>
                 </div>
             </div>
         </div>
         </div>
     )
 }
-
 export default Item

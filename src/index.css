@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(../public/assets/Pastelwallpaper.jpg);
+  background-image: url(../assets/Pastelwallpaper.jpg);
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;

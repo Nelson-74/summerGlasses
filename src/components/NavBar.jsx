@@ -34,22 +34,22 @@ useEffect(()=>{getCategories();
                     <Link className="nav-link active" aria-current="page" to="/">Inicio</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/category/sol"}>Lentes de sol</Link>
+                  <Link to="/category/sol"className="nav-link" >Lentes de sol</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/category/lectura"}>Lentes de lectura</Link>
+                  <Link to="/category/lectura"className="nav-link" >Lentes de lectura</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/category/sport"}>Lentes Sport</Link>
+                  <Link to="/category/sport"className="nav-link" >Lentes Sport</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/category/Contactología"}>Lentes de contacto</Link>
+                  <Link to="/category/Contactología" className="nav-link" >Lentes de contacto</Link>
                 </li> 
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/category/limpieza"}>Liquido para limpieza</Link>
+                  <Link to="/category/limpieza" className="nav-link" >Liquido para limpieza</Link>
                 </li>                    
              </ul>
-             <div className='carrito mx-5'><CartWidget items={8}/></div>
+             <Link to={`/producto`} className='carrito mx-5'><CartWidget items={8}/></Link>
               <div>
                   <div className="collapse navbar-collapse">
                       {categories?.map((link, i)=> {

@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 // import ItemCount from './ItemCount'
 // import { CartContext} from '../components/CartContext'
 
-function ItemDetail ({gafa:gafas}) {
-    const {title,img,price,description,stock,category} = gafas
+function ItemDetail ({gafas}) {
+  const {title,img,price,description,stock,category} =gafas
     // const [unid, setUnids] = useState();
     // const [qty,setQty] = useState(1)
 
     // const {isIncart, addItem} = useContext(CartContext)
     //  const onAdd =(qty)=>{
-    //   alert(`Cantidad de productos : ${qty}`);
+    //   alert(`Cantidad de gafas : ${qty}`);
     //   setUnids(qty);
     //   isIncart(items.id)
     //   addItem(items, qty)
@@ -23,7 +23,7 @@ function ItemDetail ({gafa:gafas}) {
            <div className= "row">
             <div className="row row-cols-3 d-flex m-3 p-3 shadow "style={{width: "21rem"}}>
               <div className="card" style={{width: "20rem"}} >
-                <img src={img} class="card-img-top" height="170 px" alt="foto de gafas"/>
+                <img src={img} class="card-img-top" height="170 px" alt="foto de lentes"/>
                    <div className="card-body ">
                        <h5 className="card-title">{title}</h5>
                        <p className="card-text">Categoria: {category}</p>
@@ -31,11 +31,14 @@ function ItemDetail ({gafa:gafas}) {
                             <br/>
                              {description}</p>
                             <br/>
-                          <p className="card-text stock-detail">Hay {stock} productos en stock</p>
+                          <p className="card-text stock-detail">Hay {stock} lentes en stock</p>
                         <Link to="/" className="btn btn-primary">Ver descripción</Link>
                         <div className='col-x1-3 d-flex flex-colum align-items-center justify-content-center'>
                         </div>
                     </div>
+                    <button>
+                <Link to="/" className="btn btn-primary">Añadir al carrito</Link>
+                </button>
               </div>
             </div>
           </div>
