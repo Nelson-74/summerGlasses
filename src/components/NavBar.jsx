@@ -2,23 +2,9 @@ import React from 'react'
 import CartWidget from './CartWidget'
 import Logo from '../images/Summer.png'
 import {Link} from 'react-router-dom'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import category from '../products.json'
 
 const NavBar = () => {
-const [categories, setCategories] = useState([]);
 
-const getCategories = () =>{
-  fetch ('../products.json')
-  .then((res)=> res.json())
-  .then((data)=>setCategories([...new setCategories(data.map((obj)=>obj.category))])
-  );  
-};
-
-useEffect(()=>{getCategories();
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[category]);
 
   return (
       
@@ -51,15 +37,7 @@ useEffect(()=>{getCategories();
              </ul>
              <Link to={`/producto`} className='carrito mx-5'><CartWidget items={8}/></Link>
               <div>
-                  <div className="collapse navbar-collapse">
-                      {categories?.map((link, i)=> {
-                        return (
-                          <Link to = {`/categories/${link}`} 
-                          key={i}
-                          className="nabvar-brand">
-                          {link}</Link>)
-                      })}
-                  </div>
+                  
               </div>
         </nav> 
         

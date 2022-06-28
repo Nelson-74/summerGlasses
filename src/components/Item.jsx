@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Item =({gafas}) => {
-     const {title,img,price,description,stock,category,id} = gafas
+const Item =({products}) => {
+     const {title,img,price,description,stock,category,id} = products
     
     return (
         <div className= "row">

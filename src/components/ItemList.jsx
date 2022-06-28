@@ -1,13 +1,13 @@
 import React from 'react'
 import Item from './Item'
-//import gafas from '../products.json';
+//import products from '../products.json';
 
-const ItemList = ({ gafas }) => {
+const ItemList = ({ products }) => {
     return (
         <>
 
             <div className="row">
-                {gafas?.map(gafa => <Item key={gafa.id} gafa={gafas} />)}
+                {products?.map(product => <Item key={product.id} product={products} />)}
             </div>
 
         </>

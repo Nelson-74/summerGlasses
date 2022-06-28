@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 // import ItemCount from './ItemCount'
 // import { CartContext} from '../components/CartContext'
 
-function ItemDetail ({gafas}) {
-  const {title,img,price,description,stock,category} =gafas
+function ItemDetail ({products}) {
+  const {title,img,price,description,stock,category} = products
     // const [unid, setUnids] = useState();
     // const [qty,setQty] = useState(1)
 

@@ -36,7 +36,7 @@ function ItemDetailContainer () {
         
             <div className='loading'> {loading &&'Loading...'}</div>
             <div>{error && 'Load error '}</div>
-            <ItemDetail productos = {productos}/>
+            <ItemDetail productos = {gafas}/>
             {/* <div>{gafas &&<div>{JSON.stringify(gafas)}</div>}</div>  */}
         </>
     )
