@@ -15,20 +15,20 @@ const isInCart = (id) => {
 
 
 //ItemDetail- se va a encargar de agregar el prod al cart,sin pisar a los agregados antes. y si duplicado aumenta la cant.
-const addItem=(Item, quantity)=>{
-  const newItem ={
-    ...Item,quantity
-  }
-  if (isInCart(newItem.id)){
-      const findProduct = cart.find (x => x.id === newItem.id )
-      const productIndex = cart.indexOf(findProduct)
-      const auxArray = [...cart]
-      auxArray [productIndex].quantity += quantity
-      setCart(auxArray)
-  }else{
-    setCart([...cart], newItem)
-  }
-}
+// const addItem=(Item, quantity)=>{
+//   const newItem ={
+//     ...Item,quantity
+//   }
+//   if (isInCart(newItem.id)){
+//       const findProduct = cart.find (x => x.id === newItem.id )
+//       const productIndex = cart.indexOf(findProduct)
+//       const auxArray = [...cart]
+//       auxArray [productIndex].quantity += quantity
+//       setCart(auxArray)
+//   }else{
+//     setCart([...cart], newItem)
+//   }
+// }
 
 
 //Vaciar el carrito-Cart- Boton
@@ -53,6 +53,6 @@ const getItemQty=()=>{
 const getItemPrice = () => {
   return cart.reduce((acc, x)=> acc =+ x.quantity * x.price, 0)
 }
- return <Provider value={[cart,isInCart,addItem, emptyCart,deleteItem, getItemQty, getItemPrice ]}>{children}</Provider>
+ return <Provider value={[cart,isInCart, emptyCart,deleteItem, getItemQty, getItemPrice ]}>{children}</Provider>
 }
 export default MyProvider

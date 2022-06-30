@@ -15,7 +15,8 @@ const Cart = () => {
       <div class="col">
         <div class="card"></div>
         <p class="mb-1">Shopping cart</p>
-        {getItemCount() > 0 ?
+        {getItemCount() > 0 
+        ?
           <div className="cart">
             <div className="Title_card">
                 <ul>
@@ -26,8 +27,8 @@ const Cart = () => {
                 </ul>
             </div>
           </div> 
-    {cart.map(Item => (
-        <div class="card mb-3">
+          {cart.map(Item => (
+             <div class="card mb-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-Items-center">
@@ -51,12 +52,12 @@ const Cart = () => {
                         <div style="width: 80px;">
                           <h5 class="mb-0">Precio Total: ${Item.count * Item.price}</h5>
                         </div>
-                        <button onClick={() => deleteItem(Item.id)} className="DelItemCard"><img className="img-fluid rounded-3" src={("../product/img")} alt={Item.name} width="45px" />Eliminar</button>
+                        <button onClick={() => deleteItem(Item.id)} className="DelItemCard" ><img className="img-fluid rounded-3" src={("../product/img")} alt={Item.name} width="45px" />Eliminar</button>
                       </div>
                     </div>
                   </div>
                 </div>
-))} 
+          ))} 
                 <div className="order_total">
                     <div className="order_total_content text-md-right">
                         <div className="order_total_title">Compra Total: {getItemCount()}</div>
@@ -65,9 +66,8 @@ const Cart = () => {
                     </div>
                     <Link to="/home"><button className="btn btn-outline-danger">Volver</button></Link>
                     <div className="cart_buttons"> <button type="button" className="button cart_button_clear">Concluir su compra</button> <button type="button" className="button cart_button_checkout"onClick={emptyCart}> Vaciar carrito</button> </div>
-:
-
-              <p className='emptyCart'>No hay productos en el carrito</p>
+        :
+        <p className='emptyCart'>No hay productos en el carrito</p>
         </div>
       </div>
     </div>     
