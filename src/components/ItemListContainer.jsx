@@ -6,9 +6,7 @@ import { getProducts, getProductsByCategory } from '../asyncMock';
 
 const ItemListContainer = (props) => {
     const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    
+    const [loading, setLoading] = useState(true)  
     //Este id proviene de la url
     const { categoryId } = useParams()
 
@@ -24,16 +22,16 @@ const ItemListContainer = (props) => {
             }).finally(() => {
                 setLoading(false)
             })
-        } else {
-            getProductsByCategory(categoryId).then(prods => {
+        } else {  
+          getProductsByCategory(categoryId).then(prods => {
                 setProducts(prods)
             }).catch(error => {
                 console.log(error)
             }).finally(() => {
                 setLoading(false)
-
             })
-        },[categoryId])
+        }
+         },[categoryId])
 
         if(loading) {
             return <h1>Cargando...</h1>
@@ -41,6 +39,7 @@ const ItemListContainer = (props) => {
     
         return (
             <>
+            
             <div className="ILC">
                 <h1>{props.greeting}</h1>
                 {products.length > 0 

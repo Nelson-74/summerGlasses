@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import gafas from'../products.json'
+import { getProducts } from '../asyncMock'
+
 
 function ItemCount({initial, max, onAdd}) {
     
@@ -15,7 +16,7 @@ function ItemCount({initial, max, onAdd}) {
     }
 
     return (  <div className='bg-light p-2 text-dark bg-opacity-75 d-flex justify-content-center row col-md-2 col-mx-auto shadow position-absolute top-50 start-50 translate-middle'>
-        <h5 className='d-flex justify-content-center row'>{gafas}</h5>              
+        <h5 className='d-flex justify-content-center row'>{getProducts}</h5>              
             <h3 className='d-flex justify-content-center row'>{count}</h3>
             <button className='btn btn-outline-info col-md-6' onClick={sumar}><strong>+</strong></button>
             <button className='btn btn-outline-info col-md-6' onClick={restar}><strong>-</strong></button>

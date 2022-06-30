@@ -1,49 +1,83 @@
-// import { useContext, useState } from 'react'
-// import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import ItemCount from './ItemCount'
-// import { CartContext} from '../components/CartContext'
+import ItemCount from './ItemCount'
+import { CartContext} from '../components/CartContext'
 
-function ItemDetail ({products}) {
-  const {title,img,price,description,stock,category} = products
+const ItemDetail = ({id,title, img,category, description,price, qty}) => {
+
+  const [quantityAdded, setQuantityAdded]= useState(0)
+  const {addItem} = useContext(CartContext)
+
+  const handLeOnAdd = (qty) => {
+    console.log(`se agregaron ${qty} ${title}`)
+    addItem ({id, title, price, qty})
+    setQuantityAdded(qty)
+
+  }
+  
     // const [unid, setUnids] = useState();
-    // const [qty,setQty] = useState(1)
+    // const [quantity,setQuantity] = useState(1)
 
     // const {isIncart, addItem} = useContext(CartContext)
     //  const onAdd =(qty)=>{
-    //   alert(`Cantidad de gafas : ${qty}`);
-    //   setUnids(qty);
+    //   alert(`Cantidad de productos : ${qty}`);
+    //   setUnids(quantity);
     //   isIncart(items.id)
     //   addItem(items, qty)
-    //};
+    // };
+  
 
+  //   export default function ItemDetail({ detalle }) {
+
+  //     const [buyed, setBuyed]=useState(false)
+      
+  //     const { nombre, imagen, precio, stock, detalles } = detalle
+      
+  //     const [dispo,setDispo]= useState(stock)
+  
+  //     useEffect(() => {
+  //         setDispo(stock)
+  //         console.log(dispo)
+             
+  //       })
+      
+  //     const { isInCart, addItem} = useContext(CartContext)
+  
+      
+  
+      
+  //      const onAdd = (count, initial) =>{
+  //        if ( count < initial ) {alert("Error, debe agregar productos al carrito.")
+  //      }else{
+  //         alert(`Se agregó ${count} productos al carrito correctamente.`)
+          
+          
+  //     }
+  
+  //     isInCart(detalle.id)
+  //      addItem(detalle, count)
+  // }
+  
     return (
       <>
-        <div>
-           <div className= "row">
-            <div className="row row-cols-3 d-flex m-3 p-3 shadow "style={{width: "21rem"}}>
-              <div className="card" style={{width: "20rem"}} >
-                <img src={img} class="card-img-top" height="170 px" alt="foto de lentes"/>
-                   <div className="card-body ">
-                       <h5 className="card-title">{title}</h5>
-                       <p className="card-text">Categoria: {category}</p>
-                          <p className="card-text">Precio: $ {price}
-                            <br/>
-                             {description}</p>
-                            <br/>
-                          <p className="card-text stock-detail">Hay {stock} lentes en stock</p>
-                        <Link to="/" className="btn btn-primary">Ver descripción</Link>
-                        <div className='col-x1-3 d-flex flex-colum align-items-center justify-content-center'>
-                        </div>
-                    </div>
-                    <button>
-                <Link to="/" className="btn btn-primary">Añadir al carrito</Link>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* //{unid > 0 ? <Link to={'/cart'} className="btn-fin"> Finalizar compra </Link> : <ItemCount max={stock} initial={1} onAdd={onAdd}/>}  */}
+        <article className="CartItem">
+          <header className="ItemHeader">
+              <h2 claSsName="ItemHeader"> {title}</h2>
+          </header>
+          <picture>
+          <img src={img} alt={title} className="ItemImg"></img>
+          </picture>
+          <section>
+          <p className="Info"> Categoria: {category}</p>
+          <p className="Info"> Descripción: {description}</p>
+          <p className="Info"> Precio: $ {price}</p>
+          </section>
+          <footer className="ItemFooter">{quantityAdded === 0
+          ? <ItemCount qty ={qty} onAdd={handLeOnAdd}/>
+          : <Link to="/cart">Terminar Compra</Link>
+          }
+          </footer>
+        </article>
         </>
     )
 }
