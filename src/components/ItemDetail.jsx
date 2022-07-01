@@ -4,59 +4,16 @@ import ItemCount from './ItemCount'
 import { CartContext} from '../components/CartContext'
 
 const ItemDetail = ({id,title, img,category, description,price, qty}) => {
-
+  
   const [quantityAdded, setQuantityAdded]= useState(0)
-  const {addItem} = useContext(CartContext)
+  const {addItem}= useContext(CartContext)
 
   const handLeOnAdd = (qty) => {
     console.log(`se agregaron ${qty} ${title}`)
     addItem ({id, title, price, qty})
     setQuantityAdded(qty)
 
-  }
-  
-    // const [unid, setUnids] = useState();
-    // const [quantity,setQuantity] = useState(1)
-
-    // const {isIncart, addItem} = useContext(CartContext)
-    //  const onAdd =(qty)=>{
-    //   alert(`Cantidad de productos : ${qty}`);
-    //   setUnids(quantity);
-    //   isIncart(items.id)
-    //   addItem(items, qty)
-    // };
-  
-
-  //   export default function ItemDetail({ detalle }) {
-
-  //     const [buyed, setBuyed]=useState(false)
-      
-  //     const { nombre, imagen, precio, stock, detalles } = detalle
-      
-  //     const [dispo,setDispo]= useState(stock)
-  
-  //     useEffect(() => {
-  //         setDispo(stock)
-  //         console.log(dispo)
-             
-  //       })
-      
-  //     const { isInCart, addItem} = useContext(CartContext)
-  
-      
-  
-      
-  //      const onAdd = (count, initial) =>{
-  //        if ( count < initial ) {alert("Error, debe agregar productos al carrito.")
-  //      }else{
-  //         alert(`Se agregó ${count} productos al carrito correctamente.`)
-          
-          
-  //     }
-  
-  //     isInCart(detalle.id)
-  //      addItem(detalle, count)
-  // }
+  };
   
     return (
       <>
