@@ -10,26 +10,26 @@ const MyProvider=({children}) => {
 const [cart, setCart]= useState(JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')):([]))
 
 //Metodo Some- se encarga de detectar si el prod.a agregar, ya está en el carrito o no. Retorna booleano.
-   const isInCart = (id) => {
+  const isInCart = (id) => {
   return cart.some ((x )=> x.id === id)
 }
 
 
 //ItemDetail- se va a encargar de agregar el prod al cart,sin pisar a los agregados antes. y si duplicado aumenta la cant.
-// const addItem=(Item, quantity)=>{
-//   const newItem ={
-//     ...Item,quantity,
-//   };
-//   if (isInCart(newItem.id)){
-//       const findProduct = cart.find (x => x.id === newItem.id )
-//       const productIndex = cart.indexOf(findProduct)
-//       const auxArray = [...cart];
-//       auxArray [productIndex].quantity += quantity
-//       setCart(auxArray);
-//   }else{
-//     setCart([...cart], newItem)
-//   }
-// };
+const addItem=(item, count)=>{
+  const newItem ={
+    ...item,count,
+  };
+  if (isInCart(newItem.id)){
+      const findProduct = cart.find (x => x.id === newItem.id )
+      const productIndex = cart.indexOf(findProduct)
+      const auxArray = [...cart];
+      auxArray [productIndex].count += count
+      setCart(auxArray);
+  }else{
+    setCart([...cart, newItem])
+  }
+};
 
 
 //Vaciar el carrito-Cart- Boton
@@ -45,19 +45,19 @@ const deleteItem=(id)=>{
 
 
 //Metodo Reduce- CartWidget-Retorna la cant total de unid. que tiene nuestro state cart
-const getItemQty=()=>{
-    return cart.reduce((acc, Item)=> (acc += Item.qty) , 0 );
+const getItemCount=()=>{
+    return cart.reduce((acc, x)=> (acc += x.count) , 0 );
 };
 
 
 // Metodo Reduce- Cart - Retorna el precio total del carrito
 const getItemPrice = () => {
-  return cart.reduce((acc, Item)=> acc =+ Item.quantity * Item.price, 0)
+  return cart.reduce((acc, Item)=> acc =+ Item.count * Item.price, 0)
 };
   useEffect(()=> {
     localStorage.setItem('cart',JSON.stringify(cart));
   },[cart])
 
- return <Provider value={[cart,isInCart, emptyCart,deleteItem, getItemQty, getItemPrice ]}>{children}</Provider>
+ return <Provider value={[cart,isInCart, emptyCart,deleteItem, getItemCount, getItemPrice,addItem ]}>{children}</Provider>
 };
 export default MyProvider

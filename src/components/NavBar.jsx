@@ -29,7 +29,7 @@ const NavBar = () => {
                   <Link to="/category/sport"className="nav-link" >Lentes Sport</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/category/Contactología" className="nav-link" >Lentes de contacto</Link>
+                  <Link to="/category/contactología" className="nav-link" >Lentes de contacto</Link>
                 </li> 
                 <li className="nav-item">
                   <Link to="/category/limpieza" className="nav-link" >Liquido para limpieza</Link>

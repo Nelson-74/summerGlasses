@@ -25,7 +25,7 @@ function ItemDetailContainer () {
         <>
         
             <h1>Detalle del producto</h1>
-            <ItemDetail {...product}/>
+            <ItemDetail {...product} initial= {1}/>
             {/* <div>{gafas &&<div>{JSON.stringify(gafas)}</div>}</div>  */}
         </>
     )

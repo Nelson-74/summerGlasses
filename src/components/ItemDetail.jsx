@@ -1,38 +1,50 @@
-import { useContext, useState } from 'react'
+import { useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import { CartContext} from '../components/CartContext'
 
-const ItemDetail = ({id,title, img,category, description,price, qty}) => {
+const ItemDetail = ({id,title, image,category, description,price, qty}) => {
   
   const [quantityAdded, setQuantityAdded]= useState(0)
   const {addItem}= useContext(CartContext)
+   
 
-  const handLeOnAdd = (qty) => {
-    console.log(`se agregaron ${qty} ${title}`)
-    addItem ({id, title, price, qty})
-    setQuantityAdded(qty)
+  
+  const handLeOnAdd = (quantity) => {
+    console.log(`se agregaron ${quantity} ${title}`)
+    addItem ({id, title, price, quantity})
+    setQuantityAdded(quantity)
 
-  };
+  }
+  
+  // const onAdd=()=>{
+  //   isInCart(item.id);
+  //   addItem(item);
+   
+    //}
   
     return (
       <>
         <article className="CartItem">
           <header className="ItemHeader">
-              <h2 claSsName="ItemHeader"> {title}</h2>
+              <h2 className="ItemHeader"> {title}</h2>
           </header>
           <picture>
-          <img src={img} alt={title} className="ItemImg"></img>
+          <img src={image} alt={title} className="ItemImg"></img>
           </picture>
           <section>
           <p className="Info"> Categoria: {category}</p>
           <p className="Info"> Descripción: {description}</p>
           <p className="Info"> Precio: $ {price}</p>
+          <p className="Info"> Stock: {qty}</p>
           </section>
           <footer className="ItemFooter">{quantityAdded === 0
           ? <ItemCount qty ={qty} onAdd={handLeOnAdd}/>
           : <Link to="/cart">Terminar Compra</Link>
           }
+          {/* <button type="button" onClick={onAdd} className="btn card-btn-cart d-grid gap-2 col-3 mx-auto mt-5"> Agregar al Carrito </button> */}
+          {/* <Link to="/home"><button className="btn btn-outline-warning"> Volver al inicio</button></Link>
+          { (getItemCount() > 0) ? <div className="btn-finalizar"><Link to="/cart" className="btn card-btn-cart"> Finalizar compra </Link></div>  : null } */}
           </footer>
         </article>
         </>
