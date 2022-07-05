@@ -1,11 +1,11 @@
 import React, { createContext,useState,useEffect } from 'react'
 
 
-export const CartContext = createContext({})
-  const {Provider} = CartContext;
 
+export const CartContext = createContext({}) ;
 
-const MyProvider=({children}) => {
+  const MyProvider = ({children})=> {
+
 
 const [cart, setCart]= useState(JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')):([]))
 
@@ -18,16 +18,17 @@ const [cart, setCart]= useState(JSON.parse(localStorage.getItem('cart')) ? JSON.
 //ItemDetail- se va a encargar de agregar el prod al cart,sin pisar a los agregados antes. y si duplicado aumenta la cant.
 const addItem=(item, count)=>{
   const newItem ={
-    ...item,count,
+    ...item,
+    count,
   };
   if (isInCart(newItem.id)){
-      const findProduct = cart.find (x => x.id === newItem.id )
-      const productIndex = cart.indexOf(findProduct)
+      const findItem= cart.find ((x) => x.id === newItem.id );
+      const itemIndex = cart.indexOf(findItem);
       const auxArray = [...cart];
-      auxArray [productIndex].count += count
+      auxArray[itemIndex].count += count;
       setCart(auxArray);
   }else{
-    setCart([...cart, newItem])
+    setCart([...cart, newItem]);
   }
 };
 
@@ -40,7 +41,8 @@ const emptyCart=()=>{
 
 //Metodo filter-Cart- Se encarga, en funcion del Id, de retornar un nvo array sin el prod. seleccionado
 const deleteItem=(id)=>{
-  return (cart.filter(Item => Item.id !== id))
+  const updatedCart = cart.filter((Item) => Item.id !== id);
+  setCart(updatedCart);
 };
 
 
@@ -52,12 +54,12 @@ const getItemCount=()=>{
 
 // Metodo Reduce- Cart - Retorna el precio total del carrito
 const getItemPrice = () => {
-  return cart.reduce((acc, Item)=> acc =+ Item.count * Item.price, 0)
+  return cart.reduce((acc, x)=> acc =+ x.count * x.price, 0)
 };
   useEffect(()=> {
     localStorage.setItem('cart',JSON.stringify(cart));
   },[cart])
 
- return <Provider value={[cart,isInCart, emptyCart,deleteItem, getItemCount, getItemPrice,addItem ]}>{children}</Provider>
+ return <CartContext.Provider value={{cart,isInCart, emptyCart,deleteItem, getItemCount, getItemPrice,addItem }}>{children}</CartContext.Provider>
 };
 export default MyProvider

@@ -2,40 +2,52 @@ import React, { useState } from 'react'
 //import { getProducts } from '../asyncMock'
 
 
-function ItemCount({initial=1, onAdd}) {
-       
-    const [enableAdd, setEnableAdd] = useState(true);
+function ItemCount({setLot,lot, onAdd,initial = 1,setToBuy}) {
+    
     const [count, setCount] = useState(initial)
-    const [quantity, setQuantity] = useState(0);
+    const [buttonAct, setButtonAct] = useState(true)
+    
 
-   
-    const add =() =>{
-        count < quantity ? setCount(count+1) : setEnableAdd (false);      
+    const world = (e) => {
+        if(e.target.textContent === "Agregar al carrito"){
+            setButtonAct(false)
+        } 
     }
-    const subtract =() =>{
-        count > initial ? setCount(count-1) : setEnableAdd(true);
+
+    const countAdd = () =>{
+        if (count === initial) setCount(count + 1) 
+        if (count < lot) setCount(count + 1)
+        console.log(lot)
+           
     }
-    const reset =()=> {
-       setCount(initial)
-    } 
-    const qtyNow = () => {
-        if (quantity - count >= 0) {setQuantity(quantity - count);} else {
-            alert("No hay stock suficiente");
-          }
-      };    
-       
-        qtyNow();
+
+
+    const countSubtract = () =>{
+        if ( count > initial) {setCount(count - 1)}
+    }
+
+    const reset = () => {
+        setCount(initial)
+    }
+
+    const shoppingCart = () => {
+        if ( count => initial ) {setCount(cart)}
+    }
+
+
+    function cart (){
         
+    }
 
     return (  
-        <div className='bg-light p-2 text-dark bg-opacity-75 d-flex justify-content-center row col-md-2 col-mx-auto shadow position-absolute top-50 start-50 translate-middle'>
-                       
-            <h3 className='d-flex justify-content-center row'>{count}</h3>
-            <button className='btn btn-outline-info col-md-6' onClick={add} disabled={!enableAdd}><strong>+</strong></button>
-            <button className='btn btn-outline-info col-md-6' onClick={subtract}><strong>-</strong></button>
-            <button className='btn btn-outline-warning' onClick={()=> {onAdd(count); reset()}}><strong>Agregar tu compra</strong></button>
-            <button className ='btn btn-outline-danger' onClick={reset}><strong>Reset</strong> </button>
-        </div> 
+        <div className="cart-container">
+            <div className="count-container">
+                <button type=" button" className="product-btn count-btn btn" onClick={()=> countSubtract()}> - </button>
+                 <button type=" button" className="product-btn count-btn btn" disabled={!buttonAct}  onClick={(e) => {onAdd(count); reset(); setToBuy(true);shoppingCart(); world(e); setLot(lot - count); console.log(lot) }}>Agregar al carrito</button> 
+                <button type=" button" className="product-btn count-btn btn" onClick={()=> countAdd()}> + </button>
+                <button type=" button" className="product-btn count-btn btn" disabled={!buttonAct} onClick={reset}> Reset </button> 
+            </div>
+        </div>
     )
 }
 

@@ -1,9 +1,9 @@
 import { useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
-import { CartContext} from '../components/CartContext'
+import { CartContext} from './context/CartContext.jsx'
 
-const ItemDetail = ({id,title, image,category, description,price, qty}) => {
+const ItemDetail = ({id,title, image,category, description,price, lot}) => {
   
   const [quantityAdded, setQuantityAdded]= useState(0)
   const {addItem}= useContext(CartContext)
@@ -36,10 +36,10 @@ const ItemDetail = ({id,title, image,category, description,price, qty}) => {
           <p className="Info"> Categoria: {category}</p>
           <p className="Info"> Descripción: {description}</p>
           <p className="Info"> Precio: $ {price}</p>
-          <p className="Info"> Stock: {qty}</p>
+          <p className="Info"> Stock: {lot}</p>
           </section>
           <footer className="ItemFooter">{quantityAdded === 0
-          ? <ItemCount qty ={qty} onAdd={handLeOnAdd}/>
+          ? <ItemCount qty ={lot} onAdd={handLeOnAdd}/>
           : <Link to="/cart">Terminar Compra</Link>
           }
           {/* <button type="button" onClick={onAdd} className="btn card-btn-cart d-grid gap-2 col-3 mx-auto mt-5"> Agregar al Carrito </button> */}
