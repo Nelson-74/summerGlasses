@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-function Item ({ product }) {
+function Item ( {product }) {
 
     const { title, image, price, description, qty, category, id } = product;
 
@@ -11,9 +11,9 @@ function Item ({ product }) {
         <div className="row">
             <div className="row row-cols-3 d-flex m-2 p-2 shadow " style={{ width: "21rem" }}>
                 <div className="card" style={{ width: "20rem" }}>
-                    <img src={image} class="card-img-top" height="170 px" alt="foto de lentes" />
+                    <img src={`../assets/lentes-${image}.png`} className ="card-img-top" height="170 px" alt="foto de lentes"/>
                     <div className="card-body ">
-                        <h5 className="card-title">{title}</h5>
+                        <p className="card-title">{title}</p>
                         <p className="card-text">Categoria {category}</p>
                         <p className="card-text">Precio: $ {price}
                         <br />

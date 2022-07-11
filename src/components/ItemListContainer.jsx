@@ -1,51 +1,61 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import { getProducts, getProductsByCategory } from '../asyncMock';
+// import {  } from '../asyncMock';
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 const ItemListContainer = (props) => {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)  
+   
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [result, setResult] = useState([]);
     //Este id proviene de la url
-    const { categoryId } = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
-        setLoading(true)
+        const db = getFirestore();
 
-        if(!categoryId) {
+        const itemsCollection = collection(db, 'items');
 
-            getProducts().then(prods => {
-                setProducts(prods)
-            }).catch(error => {
-                console.log(error)
-            }).finally(() => {
-                setLoading(false)
-            })
-        } else {  
-          getProductsByCategory(categoryId).then(prods => {
-                setProducts(prods)
-            }).catch(error => {
-                console.log(error)
-            }).finally(() => {
-                setLoading(false)
-            })
+        if (id) {
+            const q = query(itemsCollection, where ('category', '==', id));
+
+            getDocs(q).then(snapshot =>{
+                setResult(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+             })
+             .catch((error) => {
+                setError(error);
+             })
+             .finally(() => {
+                setLoading(false);
+             });
+        }else {getDocs(itemsCollection).then(snapshot =>{
+            setResult(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+         })
+         .catch((error) => {
+            setError(error);
+         })
+         .finally(() => {
+            setLoading(false);
+         });
+
+
         }
-         },[categoryId])
+              
+    },[id]);
+         
 
-        if(loading) {
-            return <h1>Cargando...</h1>
-        }
-    
+        
         return (
             <>
             
-            <div className="ILC">
-                <h1>{props.greeting}</h1>
-                {products.length > 0 
-                    ? <ItemList products={products}/>
-                    : <h1>No hay productos</h1>
-                }
+            <div className=" d-flex justify-content-center">
+                {loading && <h3>Cargando...</h3>}
+            </div>
+            <div>{error && 'Load error '}</div>
+            <div className=" d-flex justify-content-center p-3">     
+                {result && <ItemList items={result} />}                
             </div>  
             </>
             )  

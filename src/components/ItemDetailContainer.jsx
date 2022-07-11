@@ -1,32 +1,41 @@
-import React from 'react'
-import { useState,useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import ItemDetail from './ItemDetail'
-import { getProductById } from '../asyncMock';
+import { useState,useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemDetail from './ItemDetail';
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 
 function ItemDetailContainer () {
-    const [product, setProduct] = useState([]);
-    
-    const {productId} = useParams()
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [result, setResult] = useState([]);
+    const {id} = useParams();
 
     useEffect(() =>{
-       getProductById(productId)
-        . then(response =>{
-         setProduct(response)
-       })
+       const db = getFirestore();
+        
+       const itemRef = doc(db, 'items', id);
 
-    
-    },[productId]);
+       getDoc(itemRef).then((snapshot) => {
+        setResult({ ...snapshot.data(), id: snapshot.id});
+       })
+       .catch((error) => {
+        setError(error);
+       })
+       .finally(() => {
+        setLoading(false);
+       });    
+    },[id]);
 
     
 
     return (
         <>
-        
-            <h1>Detalle del producto</h1>
-            <ItemDetail {...product} initial= {1}/>
-            {/* <div>{gafas &&<div>{JSON.stringify(gafas)}</div>}</div>  */}
+           <div className=" d-flex justify-content-center">
+            {loading && <h3>Cargando...</h3>}
+           </div>
+           <div>{error && 'Load error '}</div>
+           <div className=" d-flex justify-content-center p-3">{result && <ItemDetail items ={result} />}</div>
+            
         </>
     )
 };
