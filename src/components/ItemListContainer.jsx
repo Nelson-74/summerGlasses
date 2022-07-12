@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
@@ -55,7 +54,7 @@ const ItemListContainer = (props) => {
             </div>
             <div>{error && 'Load error '}</div>
             <div className=" d-flex justify-content-center p-3">     
-                {result && <ItemList items={result} />}                
+                {result && <ItemList products={result} />}                
             </div>  
             </>
             )  

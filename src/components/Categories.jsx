@@ -8,7 +8,6 @@ function Categories ()  {
 
     useEffect(()=> {
         const db = getFirestore();
-
         const categoriesCollection = collection(db, 'categories');
 
         getDocs(categoriesCollection).then((snapshot) => {

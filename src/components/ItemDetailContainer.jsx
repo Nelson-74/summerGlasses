@@ -34,7 +34,7 @@ function ItemDetailContainer () {
             {loading && <h3>Cargando...</h3>}
            </div>
            <div>{error && 'Load error '}</div>
-           <div className=" d-flex justify-content-center p-3">{result && <ItemDetail items ={result} />}</div>
+           <div className=" d-flex justify-content-center p-3">{result && <ItemDetail items = {result} />}</div>
             
         </>
     )
