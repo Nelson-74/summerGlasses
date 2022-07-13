@@ -23,9 +23,9 @@ const addItem=(item, count)=>{
   };
   if (isInCart(newItem.id)){
       const findItem= cart.find ((x) => x.id === newItem.id );
-      const itemIndex = cart.indexOf(findItem);
+      const indexItem = cart.indexOf(findItem);
       const auxArray = [...cart];
-      auxArray[itemIndex].count += count;
+      auxArray[indexItem].count += count;
       setCart(auxArray);
   }else{
     setCart([...cart, newItem]);

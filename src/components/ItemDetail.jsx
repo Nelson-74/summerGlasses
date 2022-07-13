@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import { CartContext} from './context/CartContext.jsx'
 
-const ItemDetail = ({id,title, pictureUrl,category, description,price, stock}) => {
+const ItemDetail = ({id,title, image,category, description,price, stock}) => {
   
   const [quantityAdded, setQuantityAdded]= useState(0)
   const {addItem}= useContext(CartContext)
@@ -17,12 +17,6 @@ const ItemDetail = ({id,title, pictureUrl,category, description,price, stock}) =
 
   }
   
-  // const onAdd=()=>{
-  //   isInCart(item.id);
-  //   addItem(item);
-   
-    //}
-  
     return (
       <>
         <article className="CartItem">
@@ -30,7 +24,7 @@ const ItemDetail = ({id,title, pictureUrl,category, description,price, stock}) =
               <h2 className="ItemHeader"> {title}</h2>
           </header>
           <picture>
-          <img src={pictureUrl} alt={title} className="ItemImg"></img>
+          <img src={image} alt={title} className="ItemImg"></img>
           </picture>
           <section>
           <p className="Info"> Categoria: {category}</p>
@@ -39,7 +33,7 @@ const ItemDetail = ({id,title, pictureUrl,category, description,price, stock}) =
           <p className="Info"> Stock: {stock}</p>
           </section>
           <footer className="ItemFooter">{quantityAdded === 0
-          ? <ItemCount qty ={stock} onAdd={handLeOnAdd}/>
+          ? <ItemCount qty ={stock} onAdd={handLeOnAdd} initial={1}/>
           : <Link to="/cart">Terminar Compra</Link>
           }
           {/* <button type="button" onClick={onAdd} className="btn card-btn-cart d-grid gap-2 col-3 mx-auto mt-5"> Agregar al Carrito </button> */}

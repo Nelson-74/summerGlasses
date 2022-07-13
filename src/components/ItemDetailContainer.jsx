@@ -7,16 +7,17 @@ import {doc, getDoc, getFirestore} from 'firebase/firestore';
 function ItemDetailContainer () {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [result, setResult] = useState([]);
+    const [product, setProduct] = useState();
     const {id} = useParams();
+    const db = getFirestore();
 
     useEffect(() =>{
-       const db = getFirestore();
-        
+       
+       
        const itemRef = doc(db, 'items', id);
 
        getDoc(itemRef).then((snapshot) => {
-        setResult({ ...snapshot.data(), id: snapshot.id});
+        setProduct({ ...snapshot.data(), id: snapshot.id});
        })
        .catch((error) => {
         setError(error);
@@ -24,7 +25,7 @@ function ItemDetailContainer () {
        .finally(() => {
         setLoading(false);
        });    
-    },[id]);
+    },[db,id]);
 
     
 
@@ -34,7 +35,7 @@ function ItemDetailContainer () {
             {loading && <h3>Cargando...</h3>}
            </div>
            <div>{error && 'Load error '}</div>
-           <div className=" d-flex justify-content-center p-3">{result && <ItemDetail items = {result} />}</div>
+           <div className=" d-flex justify-content-center p-3">{product && <ItemDetail items = {product} />}</div>
             
         </>
     )

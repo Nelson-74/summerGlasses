@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-//import { getProducts } from '../asyncMock'
 
 
-function ItemCount({setQty,stock, onAdd,initial= "1",setToBuy}) {
+
+function ItemCount({setQty,qty, onAdd,initial,setToBuy}) {
     
-    const [count, setCount] = useState(initial)
+    const [quantity, setQuantityAdded] = useState(initial)
     const [buttonAct, setButtonAct] = useState(true)
     
 
@@ -14,24 +14,24 @@ function ItemCount({setQty,stock, onAdd,initial= "1",setToBuy}) {
         } 
     }
 
-    const countAdd = () =>{
-        if (count === initial) setCount(count + 1) 
-        if (stock > count) setCount(count + 1)
-        console.log(stock)
+    const quantityAdd = () =>{
+        if (quantity === initial) setQuantityAdded(quantity + 1) 
+        if (qty > quantity) setQuantityAdded(quantity + 1)
+        console.log(qty)
            
     }
 
 
-    const countSubtract = () =>{
-        if ( count > initial) {setCount(count - 1)}
+    const quantitySubtract = () =>{
+        if ( quantity > initial) {setQuantityAdded(quantity - 1)}
     }
 
     const reset = () => {
-        setCount(initial)
+        setQuantityAdded(initial)
     }
 
     const shoppingCart = () => {
-        if ( count => initial ) {setCount(cart)}
+        if ( quantity => initial ) {setQuantityAdded(cart)}
     }
 
 
@@ -40,13 +40,13 @@ function ItemCount({setQty,stock, onAdd,initial= "1",setToBuy}) {
     }
 
     return (  
-        <div className="cart-container">
-            <div className="count-container">
-            <p className="count">{count}</p>
-                <button type=" button" className="product-btn count-btn btn" onClick={()=> countSubtract()}> - </button>
-                <button type=" button" className="product-btn count-btn btn" disabled={!buttonAct}  onClick={(e) => {onAdd(count); reset(); setToBuy(true);shoppingCart(); world(e); setQty(stock - count); console.log(stock) }}>Agregar al carrito</button> 
-                <button type=" button" className="product-btn count-btn btn" onClick={()=> countAdd()}> + </button>
-                <button type=" button" className="product-btn count-btn btn" disabled={!buttonAct} onClick={reset}> Reset </button> 
+        <div className="cart-container text-center">
+            <div className="quantity-container">
+            <p className="quantity">{quantity}</p>
+                <button type=" button" className="product-btn quantity-btn btn" onClick={()=> quantitySubtract()}> - </button>
+                <button type=" button" className="product-btn quantity-btn btn" disabled={!buttonAct}  onClick={(e) => {onAdd(quantity); reset(); setToBuy(true);shoppingCart(); world(e); setQty(qty - quantity); console.log(qty) }}>Agregar al carrito</button> 
+                <button type=" button" className="product-btn quantity-btn btn" onClick={()=> quantityAdd()}> + </button>
+                <button type=" button" className="product-btn quantity-btn btn" disabled={!buttonAct} onClick={reset}> Reset </button> 
             </div>
         </div>
     )

@@ -19,7 +19,7 @@ const NavBar = () => {
              <ul className="navbar-nav mx-auto">
                <Categories/>                   
              </ul>
-             <CartWidget />
+              <CartWidget />
               <div>
                   
               </div>

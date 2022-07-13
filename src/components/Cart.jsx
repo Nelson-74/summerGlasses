@@ -16,7 +16,7 @@ const Cart = () => {
         <div class="card"></div>
         <p class="mb-1">Shopping cart</p>
      
-      { cart.length > 0 ? (
+      {getItemCount() > 0 ? (
         
           <><div className="cart">
                 <div className="Title_card">
@@ -34,10 +34,10 @@ const Cart = () => {
                            <div class="d-flex flex-row align-Items-center">
                             <picture>
                               <img src={item.image}
-                                 class="img-fluid rounded-3" alt={item.name} style={{width: "65px"}} />
+                                 class="img-fluid rounded-3" alt={item.title} style={{width: "65px"}} />
                              </picture>
                              <div class="ms-3">
-                               <p>{item.name}</p>
+                               <p>{item.title}</p>
                                <p class="small mb-0">{item.description}</p>
                              </div>
                            </div>
@@ -71,6 +71,8 @@ const Cart = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
                 </svg>
+                <br/>
+                <br/>
                 <Link to="/"> <button type="button" className="button cart_button_clear"> Escoger su/s productos</button></Link> 
                 <p className="empty_Cart"> No hay productos en el carrito</p>
               </div>

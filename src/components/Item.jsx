@@ -2,16 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-function Item ( {title, pictureUrl, price, description, stock, category, id}) {
+function Item ( {title, image, price, description, stock, category, id}) {
 
-    //const { title, pictureUrl, price, description, qty, category, id } = product;
+    //const { title, image, price, description, qty, category, id } = product;
 
     return (
         <>
         <div className="row">
             <div className="row row-cols-3 d-flex m-2 p-2 shadow " style={{ width: "21rem" }}>
                 <div className="card" style={{ width: "20rem" }}>
-                    <img src={`../assets/lentes-${pictureUrl}.png`} className ="card-img-top" height="170 px" alt="foto de lentes"/>
+                    <img src={`../assets/lentes-${image}.png`} className ="card-img-top" height="170 px" alt="foto de lentes"/>
                     <div className="card-body ">
                         <p className="card-title">{title}</p>
                         <p className="card-text">Categoria {category}</p>
