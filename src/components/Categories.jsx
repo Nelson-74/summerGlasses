@@ -4,25 +4,26 @@ import {Link} from 'react-router-dom'
 
 function Categories ()  {
 
-    const [category, setCategory] = useState([]);
+    const [categorias, setCategorias] = useState([]);
 
     useEffect(()=> {
         const db = getFirestore();
         const categoriesCollection = collection(db, 'categories');
 
-        getDocs(categoriesCollection).then((snapshot) => {
-            setCategory(snapshot.docs.map((doc) => doc.data().category));
+        getDocs(categoriesCollection)
+        .then((snapshot) => {
+            setCategorias(snapshot.docs.map((doc) => doc.data().title));
         });
     }, []);
 
   return (
     <>
-      {category.map ((el) => (
-        <li className="nav-item">
-        <Link to={'/category' + el} className="nav-link" >
-            {el}
+      {categorias.map ((categoria) => (
+        
+        <Link  key = {categoria} to= {'/categoria/' + categoria } className="nav-link" >
+            {categoria}
         </Link>
-      </li>
+      
       ))}
     </>
   )

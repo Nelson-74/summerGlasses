@@ -31,7 +31,7 @@ function ItemCount({setQty,qty, onAdd,initial,setToBuy}) {
     }
 
     const shoppingCart = () => {
-        if ( quantity => initial ) {setQuantityAdded(cart)}
+        if ( _quantity => initial ) {setQuantityAdded(cart)}
     }
 
 

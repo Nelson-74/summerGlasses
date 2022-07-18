@@ -7,17 +7,20 @@ import {doc, getDoc, getFirestore} from 'firebase/firestore';
 function ItemDetailContainer () {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [product, setProduct] = useState();
+    const [item, setItem] = useState({});
     const {id} = useParams();
-    const db = getFirestore();
+    
 
     useEffect(() =>{
-       
-       
+        
+       const db = getFirestore(); 
        const itemRef = doc(db, 'items', id);
 
-       getDoc(itemRef).then((snapshot) => {
-        setProduct({ ...snapshot.data(), id: snapshot.id});
+       getDoc(itemRef)
+
+       .then((snapshot) => {
+        setLoading (false);
+        setItem({ ...snapshot.data(), id: snapshot.id})
        })
        .catch((error) => {
         setError(error);
@@ -25,17 +28,18 @@ function ItemDetailContainer () {
        .finally(() => {
         setLoading(false);
        });    
-    },[db,id]);
+   
+    },[id])
 
     
 
     return (
         <>
            <div className=" d-flex justify-content-center">
-            {loading && <h3>Cargando...</h3>}
+            {loading && <h3>Loading...</h3>}
            </div>
-           <div>{error && 'Load error '}</div>
-           <div className=" d-flex justify-content-center p-3">{product && <ItemDetail items = {product} />}</div>
+           <div>{error && 'No se pueden cargar los productos '}</div>
+           <ItemDetail item = {item} />
             
         </>
     )

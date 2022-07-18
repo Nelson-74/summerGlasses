@@ -2,15 +2,16 @@ import React from 'react'
 import Item from './Item'
 
 
-function ItemList({ products }) {
+function ItemList({ products ,loading,error }) {
     return (
-
-
+        <>
+        <div> {loading && "Cargando los productos"}</div>
+        <div>{error && "No se pueden cargar los productos"}</div>
         <div className="row">
-            {products.map(prod => <Item key={prod.id} {...prod} />)}
+            {products.map(product => <Item key={product.id} product = {product} />)}
         </div>
 
-
+        </>
     )
 }
 
