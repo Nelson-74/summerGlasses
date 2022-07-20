@@ -9,21 +9,19 @@ const NavBar = () => {
 
   return (
       
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg bg-light " >
+        <div className ="container-fluid ">
+          <div>
+              <Link to='/'><img src={Logo} width='120' alt='logo'/></Link>
+          </div>
+            <ul className="navbar-nav mx-auto ">               
+              <Categories/>                                      
+            </ul>           
             <div>
-                <Link to='/'>
-                 <img src={Logo} width='120' alt='logo'/>
-                  
-                </Link>
+              <Link to="/Cart" className="carrito-color d-flex gap-3"><CartWidget /> </Link>  
             </div>
-             <ul className="navbar-nav mx-auto">
-               <Categories/>                   
-             </ul>
-              <CartWidget />
-              <div>
-                  
-              </div>
-        </nav> 
+        </div>
+      </nav> 
         
     );
     

@@ -20,7 +20,7 @@ function Item ({product}) {
                             {description}</p>
                         <br />
                         <p className="card-text qty-detail">Hay {stock} lentes en stock</p>
-                        <Link to={"/item/" + id}> <div className="button center"><button className="btn btn-primary">Ver descripción</button></div></Link>
+                        <Link to={`/item/${id}`}> <div className="button center"><button className="btn btn-primary">Ver descripción</button></div></Link>
                     </div>
                 </div>
             </div>

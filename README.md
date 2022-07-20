@@ -1,70 +1,50 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Summer´s Glasses 
 
-## Available Scripts
+Este repositorio se realizó durante el curso de React en Coderhouse.
+Es una pagina e-commerce de una óptica.
 
-In the project directory, you can run:
+## Descripción de la pagina :
+Esta desarrollada con 5 categorias.
+Se debe ver los productos de cada categoria, seleccionar, simular compra, agregar  mas productos sin superar el stock disponible y visualizar las compras. se genera el comprobante de compra con los detalles de nombre, mail y teléfono del cliente, generando un token de la compra.
+### Construcción :
 
-### `npm start`
+ * Se utilizó React js para su construcción.
+ * Se utilizó React router dom (un enrutador dedicado para mostrar páginas y navegar por ellas al usuario.)
+ * Se utilizó la librería Bootstrap para el diseño de la misma.
+ * Se utilizó Firebase (es una plataforma para el desarrollo de aplicaciones web y aplicaciones móviles). En donde se creó base de datos y por la misma se hizo el deploy de la pagina.
+### Accebilidad
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ Para acceder : https://summers-glasses-c69c6.firebaseapp.com
+También se puede descargar localmente :
+Run yarn install o npm install para los paquetes requeridos.
+Escribir npm start para inicializar.
+Ingresar a http://localhost:3000
+### Aprende más
+Puede obtener más información en la documentación de Create React App.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para aprender React, consulte la documentación de React.
 
-### `npm test`
+División de código
+Esta sección se ha movido aquí: https://facebook.github.io/create-react-app/docs/code-splitting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Análisis del tamaño del paquete
+Esta sección se ha movido aquí: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### `npm run build`
+Hacer una aplicación web progresiva
+Esta sección se ha movido aquí: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Configuración avanzada
+Esta sección se ha movido aquí: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Despliegue
+Esta sección se ha movido aquí: https://facebook.github.io/create-react-app/docs/deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm run build falla al minimizar
+Esta sección se ha movido aquí: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Sugerencias:
+Por consultas, sugerecias comunicarse a : nelsonandrada@gmail.com
+### Agradecimientos:
+Profesor: Guillermo Jorge Fergnani
+Tutor:Federico Blautzik

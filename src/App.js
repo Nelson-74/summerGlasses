@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cart from './components/Cart';
 import CheckOut from './components/CheckOut';
 import  {MyProvider } from './components/context/CartContext';
-
+import Contactos from './components/Contactos'
 
 
 
@@ -24,15 +24,18 @@ function App() {
         {/* mostar todos los productos */}
         <Route path='/' element={<ItemListContainer/>}/>
         {/* mostar los productos de una categoría proporcionada */}
-        <Route path='/category/:categoryId' element={<ItemListContainer/>}/>
+        <Route path='/category/:id' element={<ItemListContainer/>}/>
         {/* mostar un producto según su id proporcionado */}
-        <Route path='/item/:productId' element={<ItemDetailContainer/>}/>
+        <Route path='/item/:id' element={<ItemDetailContainer/>}/>
         {/* mostrar el carrito */}
         <Route path='/cart' element={<Cart/>}/>
 
         <Route path="/CheckOut" element={<CheckOut/>} />
+        <Route path='/Contactos' element={<Contactos/>}/>
+
       </Routes>
       </MyProvider>
+
       </BrowserRouter>
       
       </> 

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function Categories ()  {
 
-    const [categorias, setCategorias] = useState([]);
+    const [category, setCategory] = useState([]);
 
     useEffect(()=> {
         const db = getFirestore();
@@ -12,19 +12,22 @@ function Categories ()  {
 
         getDocs(categoriesCollection)
         .then((snapshot) => {
-            setCategorias(snapshot.docs.map((doc) => doc.data().title));
+            setCategory(snapshot.docs.map((doc) => doc.data().name));
         });
     }, []);
 
   return (
     <>
-      {categorias.map ((categoria) => (
+    <li className="nav-item">
+    {category.map ((el) => (
         
-        <Link  key = {categoria} to= {'/categoria/' + categoria } className="nav-link" >
-            {categoria}
+        <Link  key = {el} to= {'/category/' + el } className="nav-link" >
+            {el.charAt(0).toUpperCase() + el.slice(1)}
         </Link>
       
       ))}
+    </li>
+      
     </>
   )
 }
